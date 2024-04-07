@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# check for sudo privileges
+if sudo -v; then
+	
+	# default xampp path
+	xampp_path="/opt/lampp"
+	
+	# check if xampp directory exists
+	if [[ -d "$xampp_path" ]] then
+	# if xampp directory exists
+	
+		while getopts ':srt' OPTION; do
+		
+			case "$OPTION" in
+				s)
+				# start xampp
+					echo "--> start"
+					sudo "$xampp_path"/lampp start
+					echo "<-- start"
+					;;
+				r)
+				# restart xampp
+					echo "--> restart"
+					sudo "$xampp_path"/lampp restart
+					echo "<-- restart"
+					;;
+				t)
+				# stop xampp
+					echo "--> terminate"
+					sudo "$xampp_path"/lampp stop
+					echo "<-- terminate"
+					;;
+			esac
+		done
+	else
+	# if xampp directory does not exist
+	
+		echo "--> xampp directory does not exist: $xampp_path"
+	fi
+fi
