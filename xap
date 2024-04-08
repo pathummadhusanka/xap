@@ -10,7 +10,7 @@ if sudo -v; then
 	if [[ -d "$xampp_path" ]] then
 	# if xampp directory exists
 	
-		while getopts ':srtl' OPTION; do
+		while getopts ':srtlc' OPTION; do
 		
 			case "$OPTION" in
 				s)
@@ -36,6 +36,11 @@ if sudo -v; then
 					echo "--> server dir"
 					grep -n 'DocumentRoot "/.*"' "$xampp_path"/etc/httpd.conf
 					echo "<-- server dir"
+					;;
+				c)
+					echo "--> status"
+					sudo "$xampp_path"/lampp status
+					echo "<-- status"
 					;;
 			esac
 		done
