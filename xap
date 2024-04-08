@@ -38,6 +38,7 @@ if sudo -v; then
 					echo "<-- server dir"
 					;;
 				c)
+				# print status
 					echo "--> status"
 					sudo "$xampp_path"/lampp status
 					echo "<-- status"
