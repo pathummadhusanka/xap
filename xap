@@ -10,7 +10,7 @@ if sudo -v; then
 	if [[ -d "$xampp_path" ]] then
 	# if xampp directory exists
 	
-		while getopts ':srtlc' OPTION; do
+		while getopts ':srtlch' OPTION; do
 		
 			case "$OPTION" in
 				s)
@@ -42,6 +42,14 @@ if sudo -v; then
 					echo "--> status"
 					sudo "$xampp_path"/lampp status
 					echo "<-- status"
+					;;
+				h)
+				# help
+					echo "-s start"
+					echo "-r restart"
+					echo "-t terminate"
+					echo "-l print server dir"
+					echo "-c check status"
 					;;
 			esac
 		done
